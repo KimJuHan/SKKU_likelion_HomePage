@@ -223,6 +223,9 @@
                 $('nav').css("opacity", 1);
             }
           });
+          if($(window).width() < 480){
+            $('.article-content.left').insertAfter('.l-col-2.right');
+          }
       });
   </script>
   </body>
