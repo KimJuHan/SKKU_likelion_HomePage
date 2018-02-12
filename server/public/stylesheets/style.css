@@ -1,0 +1,500 @@
+/* 초기화 */
+html, body, ul, li, h1, p {
+  padding : 0;
+  margin : 0;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+/* layout */
+.l-wrapper {
+  width : 70%;
+  margin : 0 auto; 
+  overflow : hidden;
+  background-color : #f7f7f7;
+}
+
+.l-header {
+  background-image: url('/images/headerImage.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height : 100vh;
+  font-family: 'Dhurjati', sans-serif;
+}
+
+.l-header.join{
+  background-image: url('/images/join.jpg');
+  height : auto;
+}
+
+.l-header.posts{
+  background-image: url('/images/write.jpg');
+  height : auto;
+}
+.l-row {
+  position : relative;
+  overflow : hidden;
+  box-sizing : border-box;
+}
+
+.l-col-1 {
+  width : 100%;
+  list-style-type: none;
+  text-align: center;
+}
+
+.l-col-2 {
+  float : left;
+  width : 50%;
+  box-sizing : border-box;
+  list-style-type: none;
+  text-align: center;
+  padding: 0 1em 0 1em;
+}
+
+.l-col-3 {
+  width : 33.33333%;
+}
+.l-col-3.left {
+  float : left;
+}
+.l-col-3.right {
+  float : right;
+}
+
+img {
+  box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);
+}
+
+.l-main {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+
+/* header */
+nav{
+  position : fixed;
+  left : 0;
+  top : 0; 
+  background-color : transparent;
+  padding : 1rem 0 1rem 0;
+  width : 100%;
+  z-index: 100;
+}
+
+nav:hover{
+  background-color : gray;
+  opacity : 0.5;
+}
+.header-menu {
+  overflow : hidden;
+  padding-top : 2em;
+  padding-right : 3em;
+  float : right;
+  /* width : 50%; */
+  /* margin : 0 auto; */
+}
+
+.header-menu a {
+  float : left;
+  padding-left : 3em;
+  color : white;
+  text-decoration: none;
+}
+
+
+.header-menu a:hover {
+  float : left;
+  /* 밑줄말고 글씨 채도 바뀌게 하고 싶다. */
+  text-decoration: underline;
+}
+
+.header-menu a li{
+  font-size : 1.5em;
+  font-weight: bold;
+  list-style-type: none;
+  text-align: center;
+}
+
+#logo{
+  width : 3em;
+  margin-top : -0.7em;
+  margin-right : -1em;
+  box-shadow : none;
+}
+
+.header-message{
+  position : absolute;
+  top : 50%;
+  left : 50%;
+  transform:translateX(-50%) translateY(-50%);
+}
+.header-message h1{
+  font-family: 'Dhurjati', sans-serif;
+  font-size : 5em;
+}
+
+/* main */
+
+.introduction h1{
+  padding-bottom: 1em;
+}
+.main-headline p{
+  padding-top : 1em;
+}
+
+#lion-logo {
+  width : 5em;
+}
+
+#representer {
+  width : 100%;
+  border-radius : 10px;
+}
+
+#hackerton {
+  width : 100%;
+  border-radius : 10px;
+}
+
+.main-headline {
+  margin-top : 3em;
+  margin-bottom: 3em;
+}
+
+.main-article1 {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3em;
+}
+
+.article-content {
+  position : absolute;
+  top : 50%;
+  right : 0;
+  transform : translateY(-50%);
+  width : 50%;
+  padding-right : 1em;
+  padding-left : 1em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.article-content.left{
+  left: 0;
+}
+.l-col-2.right{
+  float :right;
+}
+
+#study {
+  width : 50%;
+  border-radius : 10px;
+}
+
+.l-col-2 ul li{
+  text-align: left;
+  padding-top : 1em;
+  font-size: 0.9em
+}
+
+.curriculum .l-row {
+  list-style-type: none;
+}
+
+.curriculum .l-row .l-col-3 {
+  padding : 1em; 
+}
+
+.l-row.last {
+  margin-bottom : 3em;
+}
+
+.apply .main-article1 p{
+  margin-top : 0;
+}
+
+.apply .main-headline li:first-child {
+  padding-bottom: 2em;
+}
+
+.apply .main-headline li:last-child a {
+  padding: 1em;
+}
+
+
+/* footer */
+.l-footer {
+  background-color : black;
+}
+
+.l-footer .l-wrapper {
+  background-color : black;
+  text-align: center;
+  padding: 3em 0 3em 0;
+}
+
+.l-footer {
+  color : white;
+}
+
+/* toggle */
+.mobile-logo, .menu-button {
+  display : none;
+}
+
+.toggle-menu-item {
+  position : fixed;
+  width : 100px;
+  top : 73px;
+  font-size : 16px;
+  padding-left : 1em;
+  z-index : 100;
+}
+
+.toggle-menu-item a{
+  color: white;
+  text-decoration: none;
+}
+
+.toggle-menu-item a li{
+  list-style-type: none;
+  background-color :transparent;
+  opacity : 0.7;
+  /* text-align: center; */
+}
+
+.toggle-menu-item a li:hover{
+  text-decoration: underline;
+}
+/* join page */
+.join-form, .posts-form {
+  background-color : white;
+  opacity : 0.8;
+  position : absolute;
+  top : 0;
+  left : 50%;
+  transform : translateX(-50%);
+  padding : 1em;
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+.join-form input, textarea, button, .posts-form input, textarea, .modal-form input, textarea, #myBtn {
+  height: 34px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  border-top: none;
+  border-bottom: 1px solid #DDD;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+  opacity : 0.7;
+}
+
+.submit-position {
+  overflow : hidden;
+}
+.submit-position input, button {
+  float : right;
+}
+
+.submit-position input:hover, button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#myBtn{
+  margin-top: 1em;
+}
+
+.solving-absolute {
+  content : ' ';
+  height : 100vh;
+}
+
+/* posts page */
+.posts-form {
+  width : 30%;
+}
+.post {
+  list-style-type: none;
+  border : 1px dotted gray;
+  margin-bottom: 1em;
+}
+
+.post li:last-child {
+  padding-bottom: 1em;
+}
+
+/* pagination */
+.pagination{
+  text-align: center;
+}
+
+.pagination li{
+  list-style-type: none;
+  display : inline-block;
+}
+.pagination a{
+  color: black;
+  text-decoration: none;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+.modal-form input{
+  width : 100%;
+}
+.modal-form textarea{
+  width : 100%;
+  height : 5em;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.comment {
+  width : 97.5%;
+  height : 5em;
+}
+
+@media ( max-width: 1415px ) {
+  .main-article1 .article-content.left, .l-col-3{
+    font-size : 0.7em;
+  }
+  .header-message{
+    text-align: center;
+    position : relative;
+  }
+}
+
+@media ( max-width: 1060px ) {
+  .main-article1, .l-col-3{
+    font-size : 0.7em;
+  }
+  .main-article1 .article-content.left{
+    font-size : 0.7em;
+  }
+  .header-message{
+    text-align: center;
+    position : relative;
+  }
+}
+
+@media ( max-width : 930px ) {
+  .header-message{
+    text-align: center;
+    position : relative;
+  }
+  .menu-item {
+    display : none;
+  }
+  nav {
+    background-color : gray;
+    opacity : 0.5; 
+    padding : 0;
+  }
+  .header-menu {
+    padding-left : 3em;
+    padding-bottom: 2em;
+    float : left;
+  }
+  .menu-button {
+    display: inline-block;
+  }
+  .mobile-logo {
+    position : absolute;
+    right: 30px;
+    top: 115px;
+    width : 200px;
+    opacity: 0.5;
+    display : inline-block;
+    box-shadow: none;
+  }
+}
+
+@media ( max-width: 797px ) {
+  .main-article1, .l-col-3{
+    font-size : 0.5em;
+  }
+}
+
+@media ( max-width: 580px ) {
+  html {
+    font-size : 12px;
+  }
+  nav {
+    background-color : gray;
+    opacity : 0.5; 
+    padding : 0;
+  }
+  .header-message{
+    text-align: center;
+    position : relative;
+  }
+  .menu-item {
+    display : none;
+  }
+  .header-menu {
+    padding-left : 3em;
+    padding-bottom: 2em;
+    float : left;
+  }
+  .menu-button {
+    display: inline-block;
+  }
+  .mobile-logo {
+    position : absolute;
+    right: 30px;
+    top: 115px;
+    width : 200px;
+    opacity: 0.5;
+    display : inline-block;
+    box-shadow: none;
+  }
+  .toggle-menu-item {
+    margin-top:10px;
+  }
+  .toggle-menu-item br{
+    display: none;
+  }
+}
+
+@media ( max-width: 536px ) {
+  html {
+    font-size : 10px;
+  }
+  .main-article1{
+    font-size : 13px;
+  }
+}

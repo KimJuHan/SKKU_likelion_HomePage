@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width">
+    <title>SKKU*LikeLion</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css?family=Dhurjati|Nanum+Gothic" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  </head>
+  <body>
+    <div class="l-header posts">
+      <img class="mobile-logo" src="/images/likelion3.png" alt="">
+      <nav>
+        <ul class="header-menu"> 
+          <button class="menu-button"><i class="fas fa-bars fa-2x"></i></button>
+          <div class="menu-item">
+            <a class="logo-button" href="/"><li><img id="logo" src="/images/likelion3.png" alt="logo"></li></a>
+            <a class="introduction-button" href="/"><li>HOME</li></a>
+            <a class="curriculum-button" href="/"><li>CURRICULUM</li></a>
+            <% if(typeof(userData)!=='undefined' && userData.displayName ==='admin'){%>
+              <a href="/admin"><li>ADMIN</li></a>
+            <%}%>
+            <% if(isLogin){%>
+              <a href="/users/logout" onclick="return confirm('로그아웃 하시겠습니까?')"><li>LOGOUT</li></a>
+              <a href="/posts/1"><li>POST</li></a>
+            <%}else{%>
+              <a href="/users/join"><li>JOIN</li></a>
+              <a href="/users/login"><li>LOGIN</li></a>
+            <%}%>
+          </div>
+        </ul>
+      </nav>
+      <!-- navbar toggle -->
+      <div class="toggle-menu-item">  
+              <br>
+              <a class="introduction-button" href="/"><li>HOME</li></a>
+              <a class="curriculum-button" href="/"><li>CURRICULUM</li></a>
+              <% if(typeof(userData)!=='undefined' && userData.displayName ==='admin'){%>
+              <a href="/admin"><li>ADMIN</li></a>
+              <%}%>
+              <% if(isLogin){%>
+                <a href="/users/logout" onclick="return confirm('로그아웃 하시겠습니까?')"><li class="loginCheck">LOGOUT</li></a>
+                <a href="/posts/1"><li>POST</li></a>
+              <%}else{%>
+                <a href="/users/join"><li>JOIN</li></a>
+                <a href="/users/login"><li>LOGIN</li></a>
+              <%}%>
+      </div>
+      <div class="header-message">
+        <h1>SKKU X LIKELION</h1>
+      </div>
+      <div class="posts-form">
+        <% posts.forEach(function(post){ %>
+            <ul class="post">
+                <li><h3>#<%= post.id%>번째 글</h3></li>
+                <li><h4>글쓴이(닉네임) : <%= post.userId %></h4></li>
+                <li><h4>제목 : <%= post.headerName %></h4></li>
+                <li>내용 : <%= post.content %></li>
+                <% if(post.comment){ %>
+                    <li><span style="color:red;">운영진 댓글 : </span><%= post.comment %></li>
+                <%}%>
+                <% if(userData.displayName === "admin"){ %>
+                    <form action="/posts/comments" method="post">
+                        <input type="hidden" name="post_id" value="<%= post.id%>">
+                        <textarea class="comment" name="comment"></textarea>
+                        <input type="submit" value="댓글달기">
+                    </form>
+                <%}%>
+            </ul>
+        <% })%>
+        <div class="submit-position">
+            <button id="myBtn">글쓰기</button>
+        </div>
+            <% if (pages > 0) { %>
+                <ul class="pagination">
+                    <% if (current == 1) { %>
+                        <li><a href="/posts/1">&laquo;</a></li>
+                    <% } else { %>
+                        <li><a href="/posts/1">&laquo;</a></li>
+                    <% } %>
+                    <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                    <% if (i !== 1) { %>
+                        <li class="disabled"><a>...</a></li>
+                    <% } %>
+                    <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                        <% if (i == current) { %>
+                            <li class="active"><a href="/posts/<%= i%>"><%= i %></a></li>
+                        <% } else { %>
+                            <li><a href="/posts/<%= i %>"><%= i %></a></li>
+                        <% } %>
+                        <% if (i == Number(current) + 4 && i < pages) { %>
+                            <li class="disabled"><a>...</a></li>
+                        <% } %>
+                    <% } %>
+                    <% if (current == pages) { %>
+                        <li><a href="/posts/<%= pages %>">&raquo;</a></li>
+                    <% } else { %>
+                        <li><a href="/posts/<%= pages %>">&raquo;</a></li>
+                    <% } %>
+                </ul>
+            <% } %>
+      </div>
+      <div class="solving-absolute">
+      </div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form class="modal-form" action="/posts/write" method="post">
+                <input type="hidden" name="_csrf" value="<%=csrfToken%>" />
+                <h2>APPLY & QUESTION</h2>
+                <input type="text" name="headerName" placeholder="제목을 입력해주세요"><br><br>
+                <textarea name="content" rows="10" cols="50em" placeholder="내용을 입력해주세요"></textarea><br><br>
+                <input type="submit" value="작성하기">
+            </form>
+        </div>
+      </div>
+    </div>
+    <script>
+        var postHeight = $('.posts-form').outerHeight();
+        $('.solving-absolute').css("height", "50vh");
+        var beforePostHeight = $('.solving-absolute').outerHeight();
+        var wantedHeight = postHeight + beforePostHeight + 100;
+        $('.l-header.posts').css("height", wantedHeight);
+        $('.posts-form').css("font-size", "16px");
+        $(".toggle-menu-item").hide();
+        $('.posts-form').hide();
+        $(document).ready(function(){
+            $(".menu-button").click(function() {
+              // open the menu with slide effect
+              $(".toggle-menu-item").slideToggle(300);
+            });
+            $('.header-message').animate({
+                top: $('nav').outerHeight() 
+            }, 1000, function(){
+                $('.header-message').css("position", "relative");
+                $('.header-message').css("text-align", "center");
+                var location = $('.header-message').offset().top + $('.header-message').outerHeight();
+                $('.posts-form').css("top", location);
+                $('.posts-form').show();
+            })
+            // Get the modal
+            var modal = document.getElementById('myModal');
+
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks on the button, open the modal 
+            btn.onclick = function() {
+                if($('.loginCheck').html()){
+                    modal.style.display = "block";
+                }else{
+                    location.href="/users/login"
+                }
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+            
+        })
+    </script>
+  </body>
+</html>

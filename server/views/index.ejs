@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width">
+    <title>SKKU*LikeLion</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css?family=Dhurjati|Nanum+Gothic" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  </head>
+  <body>
+    <div class="l-header">
+      <img class="mobile-logo" src="/images/likelion3.png" alt="">
+      <nav>
+        <ul class="header-menu"> 
+          <button class="menu-button"><i class="fas fa-bars fa-2x"></i></button>
+          <div class="menu-item">
+            <a class="logo-button" href=""><li><img id="logo" src="/images/likelion3.png" alt="logo"></li></a>
+            <a class="introduction-button" href=""><li>INTRODUCTION</li></a>
+            <a class="curriculum-button" href=""><li>CURRICULUM</li></a>
+            <a class="apply-button" href=""><li>APPLY</li></a>
+            <% if(typeof(userData)!=='undefined' && userData.displayName ==='admin'){%>
+              <a href="/admin"><li>ADMIN</li></a>
+            <%}%>
+            <% if(isLogin){%>
+              <a href="/users/logout" onclick="return confirm('로그아웃 하시겠습니까?')"><li>LOGOUT</li></a>
+              <a href="/posts/1"><li>POST</li></a>
+            <%}else{%>
+              <a href="/users/join"><li>JOIN</li></a>
+              <a href="/users/login"><li>LOGIN</li></a>
+            <%}%>
+          </div>
+        </ul>
+      </nav>
+      <!-- navbar toggle -->
+      <div class="toggle-menu-item">  
+              <br>
+              <a class="introduction-button" href=""><li>INTRODUCTION</li></a>
+              <a class="curriculum-button" href=""><li>CURRICULUM</li></a>
+              <a class="apply-button" href=""><li>APPLY</li></a>
+              <% if(typeof(userData)!=='undefined' && userData.displayName ==='admin'){%>
+              <a href="/admin"><li>ADMIN</li></a>
+              <%}%>
+              <% if(isLogin){%>
+                <a href="/users/logout" onclick="return confirm('로그아웃 하시겠습니까?')"><li>LOGOUT</li></a>
+                <a href="/posts/1"><li>POST</li></a>
+              <%}else{%>
+                <a href="/users/join"><li>JOIN</li></a>
+                <a href="/users/login"><li>LOGIN</li></a>
+              <%}%>
+      </div>
+      <div class="header-message">
+        <h1>SKKU X LIKELION</h1>
+      </div>
+    </div>
+    <div class="navbar-point"></div>
+    <div class="l-main">
+      <section class="introduction">
+        <div class="l-wrapper">
+          <ul class="l-row">
+            <div class="main-headline">
+              <li class="l-col-1"><h1>INTRODUCTION</h1></li>
+              <li class="l-col-1"><img id="lion-logo" src="/images/likelion4.png" alt=""></li>
+              <li class="l-col-1"><p>"내가 직접 프로그래밍하겠다"</p></li>
+            </div>
+          </ul>
+          <ul class="l-row">
+            <div class="main-article1">
+              <li class="l-col-2"><img id="representer" src="/images/yiduhi.jpg" alt=""></li>
+              <div class="article-content">
+                  <p>"기술적 장벽 때문에 자신의 뜻을 펼치지 못하는 비전공자들을 위하여"<br>
+                  - 대표 : 이두희 -</p>
+              </div>
+            </div>
+          </ul>
+          <ul class="l-row">
+            <div class="main-article1">
+              <div class="article-content left">
+                <p>"서울대에서 불과 약 20명으로 시작한 작은 동아리는 2016년 기준 미국, 호주, 일본을 비롯한 전국 81개 대학교, 약 1200명의 학생들을 회원으로 가지고 있는 전국에서 가장 큰 코딩교육동아리로 성장하였습니다."</p>
+              </div>              
+              <li class="l-col-2 right"><img id="hackerton" src="/images/hackerton.jpg" alt=""></li>
+            </div>
+          </ul>
+          <hr>
+        </div>  
+      </section>
+      <section class="curriculum">
+        <div class="l-wrapper">
+          <ul class="l-row">
+            <div class="main-headline">
+              <li class="l-col-1"><h1>CURRICULUM</h1></li>
+            </div>
+          </ul>
+          <ul class="l-row">
+              <li class="l-col-3 left"><i class="fas fa-check fa-lg"></i> 1학기에는 웹프로그래밍을 주로 다룰 것이며, 기반 언어는 루비로, 프레임워크는 레일즈로 진행할 계획입니다.</li>
+              <li class="l-col-3 right"><i class="fas fa-check fa-lg"></i> 매주 수요일 7시 30분 세션을 진행합니다. 팀을 나누어 1학기 동안 팀별 스터디를 진행합니다.</li>
+          </ul>
+          <ul class="l-row">
+              <li class="l-col-1"><img id="study" src="/images/study.jpg" alt=""></li>
+          </ul>
+          <ul class="l-row last">
+            <li class="l-col-3 left"><i class="fas fa-check fa-lg"></i> 8월에는 중앙에서 전국규모의 해커톤 행사가 계획되어 있습니다.</li>
+            <li class="l-col-3 right"><i class="fas fa-check fa-lg"></i> 2학기에는 자바스크립트, 알고리즘, 딥러닝, 머신러닝의 기초를 다룰 예정입니다.</li>
+          </ul>     
+          <hr>
+        </div>  
+      </section>
+      <section class="apply">
+        <div class="l-wrapper">
+          <ul class="l-row">
+            <div class="main-headline">
+              <li class="l-col-1"><h1>APPLY & QUESTION</h1></li>
+              <li class="l-col-1"><a href="https://www.facebook.com/likelionskku/"><i class="fab fa-facebook fa-2x"></i></a><a href="/posts/1"><i class="fas fa-sign-in fa-2x"></i></a></li>
+            </div>
+          </ul>
+          <ul class="l-row last">
+            <div class="main-article1">
+              <li class="l-col-1"><p>지원과 관련하여 질문이 있으시면 페이스북을 통하여 혹은 본 페이지의 <br>간단한 회원가입 후 글을 남겨주세요. 어떠한질문이든 성심성의껏 답변하겠습니다.</p></li>
+            </div>
+          </ul>
+          <hr>
+        </div>
+      </section>
+      <section class="member">
+        <div class="l-wrapper">
+          <ul class="l-row">
+            <div class="main-headline">
+              <li class="l-col-1"><h1>OPERATION MEMBER</h1></li>
+            </div>
+          </ul>
+          <ul class="l-row">
+            <li class="l-col-3"><img src="" alt=""></li>
+            <li class="l-col-3"><img src="" alt=""></li>
+            <li class="l-col-3"><img src="" alt=""></li>
+          </ul>
+          <ul class="l-row">
+            <li class="l-col-3"><img src="" alt=""></li>
+            <li class="l-col-3"><img src="" alt=""></li>
+            <li class="l-col-3"><img src="" alt=""></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+    <div class="l-footer">
+      <div class="l-wrapper">
+        <p>멋쟁이사자처럼 copyright @ SKKU X LIKELION 2018</p>
+      </div>
+    </div>
+  <script type="text/javascript">
+      $(".toggle-menu-item").hide();
+      $(document).ready(function($) {
+          // when .menuBtn is clicked, do this
+          $(".menu-button").click(function() {
+              // open the menu with slide effect
+              $(".toggle-menu-item").slideToggle(300);
+          });
+          $('.logo-button').click(function(e){
+              e.preventDefault();
+              $('html, body').animate({
+                  scrollTop: $("body").offset().top
+              }, 1000);
+          })
+          $('.introduction-button').click(function(e){
+              e.preventDefault();
+              $('html, body').animate({
+                  scrollTop: $(".introduction").offset().top
+              }, 1000);
+          })
+          $('.curriculum-button').click(function(e){
+              e.preventDefault();
+              $('html, body').animate({
+                  scrollTop: $(".curriculum").offset().top
+              }, 1000);
+          })
+          $('.apply-button').click(function(e){
+              e.preventDefault();
+              $('html, body').animate({
+                  scrollTop: $(".apply").offset().top
+              }, 1000);
+          })
+          $(window).scroll(function() {
+            var hT = $('.navbar-point').offset().top,
+                hH = $('.navbar-point').outerHeight(),
+                wH = $(window).height(),
+                wS = $(this).scrollTop();
+            if (wS > hT){
+                $('nav').css("background-color", "gray");
+                $('nav').css("opacity", 0.5);
+            }
+          });
+          $(window).scroll(function() {
+            var hT = $('.navbar-point').offset().top,
+                hH = $('.navbar-point').outerHeight(),
+                wH = $(window).height(),
+                wS = $(this).scrollTop();
+            if (wS < hT){
+                $('nav').css("background-color", "transparent");
+                $('nav').css("opacity", 1);
+            }
+          });
+          $(window).scroll(function() {
+            var hT = $('.navbar-point').offset().top,
+                hH = $('.navbar-point').outerHeight(),
+                wH = $(window).height(),
+                wS = $(this).scrollTop();
+            if (wS > hT){
+                $('.toggle-menu-item a li').css("color", "green");
+                $('.toggle-menu-item a li').css("opacity", 0.5);
+            }
+          });
+          $(window).scroll(function() {
+            var hT = $('.navbar-point').offset().top,
+                hH = $('.navbar-point').outerHeight(),
+                wH = $(window).height(),
+                wS = $(this).scrollTop();
+            if (wS < hT){
+                $('.toggle-menu-item a li').css("color", "white");
+                $('nav').css("opacity", 1);
+            }
+          });
+      });
+  </script>
+  </body>
+</html>

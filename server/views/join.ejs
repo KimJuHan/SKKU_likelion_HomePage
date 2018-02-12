@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width">
+    <title>SKKU*LikeLion</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="https://fonts.googleapis.com/css?family=Dhurjati|Nanum+Gothic" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+  </head>
+  <body>
+    <div class="l-header join">
+      <img class="mobile-logo" src="/images/likelion3.png" alt="">
+      <nav>
+        <ul class="header-menu"> 
+          <button class="menu-button"><i class="fas fa-bars fa-2x"></i></button>
+          <div class="menu-item">
+            <a class="logo-button" href="/"><li><img id="logo" src="/images/likelion3.png" alt="logo"></li></a>
+            <a class="introduction-button" href="/"><li>INTRODUCTION</li></a>
+            <a class="curriculum-button" href="/"><li>CURRICULUM</li></a>
+            <a class="apply-button" href="/"><li>APPLY</li></a>
+            <% if(typeof(userData)!=='undefined' && userData.displayName ==='admin'){%>
+              <a href=""><li>ADMIN</li></a>
+            <%}%>
+            <% if(isLogin){%>
+              <a href="/users/logout" onclick="return confirm('로그아웃 하시겠습니까?')"><li>LOGOUT</li></a>
+              <a href="/posts/1"><li>POST</li></a>
+            <%}else{%>
+              <a href="/users/join"><li>JOIN</li></a>
+              <a href="/users/login"><li>LOGIN</li></a>
+            <%}%>
+          </div>
+        </ul>
+      </nav>
+      <!-- navbar toggle -->
+      <div class="toggle-menu-item">  
+              <br>
+              <a class="introduction-button" href="/"><li>INTRODUCTION</li></a>
+              <a class="curriculum-button" href="/"><li>CURRICULUM</li></a>
+              <a class="apply-button" href="/"><li>APPLY</li></a>
+              <% if(typeof(userData)!=='undefined' && userData.displayName ==='admin'){%>
+              <a href="/admin"><li>ADMIN</li></a>
+              <%}%>
+              <% if(isLogin){%>
+                <a href="/users/logout" onclick="return confirm('로그아웃 하시겠습니까?')"><li>LOGOUT</li></a>
+                <a href="/posts/1"><li>POST</li></a>
+              <%}else{%>
+                <a href="/users/join"><li>JOIN</li></a>
+                <a href="/users/login"><li>LOGIN</li></a>
+              <%}%>
+      </div>
+      <div class="header-message">
+        <h1>SKKU X LIKELION</h1>
+      </div>
+      <div class="join-form">
+        <form action="" method="post">
+            닉네임 : <input type="text" name="displayName" placeholder="닉네임을 입력하세요"><br><br>
+            아이디 : <input class="email" type="text" name="email" placeholder="아이디를 입력하세요"><button id="doubleCheck" style="margin-right:50px; color:red">중복체크</button><br><br>
+            비밀번호 : <input id="pw" type="password" name="password" placeholder="비밀번호를 입력하세요"><br><br>
+            비밀번호 확인 : <input id="pw_re" type="password" name="password_confirm" placeholder=""><br><br>
+            멋사를 알게 된 계기는 무엇인가요? <br><br><textarea name="content" rows="5em" cols="50em"></textarea><br><br>
+            <div class="submit-position">
+                <input type="submit" value="회원가입"> 
+            </div>
+        </form>
+      </div>
+      <div class="solving-absolute">
+      </div>
+    </div>
+    <script>
+        $(".toggle-menu-item").hide();
+        $('.join-form').hide();
+        $(document).ready(function(){
+            $(".menu-button").click(function() {
+                // open the menu with slide effect
+                $(".toggle-menu-item").slideToggle(300);
+            });
+            $('.header-message').animate({
+                top: $('nav').outerHeight() 
+            }, 1000, function(){
+                $('.header-message').css("position", "relative");
+                $('.header-message').css("text-align", "center");
+                var location = $('.header-message').offset().top + $('.header-message').outerHeight();
+                $('.join-form').css("top", location);
+                $('.join-form').show();
+            })
+            $('.join-form form').submit(function(){
+                if($('#pw').val() !== $('#pw_re').val()){
+                    alert('비밀번호가 일치하지 않습니다!');
+                }
+            })
+            $('#doubleCheck').click(function(e){
+                e.preventDefault();
+                $.ajax({
+                  url: '/users/idCheck',
+                  method: 'GET',
+                  data: $('.email').val(),
+                  dataType: 'text',
+                  success: function(data){
+                    alert(data);
+                  },
+                  error: function(err){
+                    console.log("데이터 송수신 실패")
+                  }
+                })
+            })
+        })
+    </script>
+  </body>
+</html>
